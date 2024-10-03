@@ -58,4 +58,8 @@ public class MainMenuHandler : MonoBehaviour
             IngameUIManager.Instance.ResumeGameAnimationComplete();
         }
     }
+    public bool IsAnimationName(string value)
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).IsName(value);
+    }
 }

@@ -31,21 +31,31 @@ public class AttackingScript : MonoBehaviour
             OnClick();
         }
 
-        if (playerHack && playerHack.GetChargeValue() >= 10)
+        if (playerHack)
         {
             if (Input.GetMouseButtonDown(1))
             {
-                if (GetComponent<Entity>())
+                if (playerHack.GetChargeValue() >= 10)
                 {
-                    if (GetComponent<Entity>().skill && GetComponent<ThirdPersonControllerRB>().Grounded && anim.GetBool("Hit2") == false && anim.GetBool("Hit1") == false)
+                    if (GetComponent<Entity>())
                     {
-                        if (GetComponent<Entity>().skill.GetCooldownRemaining() <= 0)
+                        if (GetComponent<Entity>().skill && GetComponent<ThirdPersonControllerRB>().Grounded && anim.GetBool("Hit2") == false && anim.GetBool("Hit1") == false)
                         {
-                            if (GetComponent<Entity>().skill.Activate(gameObject))
+                            if (GetComponent<Entity>().skill.GetCooldownRemaining() <= 0)
                             {
-                                playerHack.RemoveChargeValue(10.0f);
+                                if (GetComponent<Entity>().skill.Activate(gameObject))
+                                {
+                                    playerHack.RemoveChargeValue(10.0f);
+                                }
                             }
                         }
+                    }
+                }
+                else
+                {
+                    if (GetComponent<Entity>() && GetComponent<Entity>().skill)
+                    {
+                        playerHack.DisplayHackNotification();
                     }
                 }
             }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3671805983147912151}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5177364851707860846}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 5887305427435394931}
   - component: {fileID: 8273469239341097713}
   - component: {fileID: 8158823924808309242}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Book (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 4203526910620722237}
   - component: {fileID: 5884354891368923719}
   - component: {fileID: 5605831939848509946}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cube (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6865685861980087216}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Desktop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 51531741277442526}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 8139383590506040773}
   - component: {fileID: 3866508525352681411}
   - component: {fileID: 8159198372147388407}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cube (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 754549934321704523}
   - component: {fileID: 7411432909672418343}
   - component: {fileID: 1009957347345053974}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Book (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

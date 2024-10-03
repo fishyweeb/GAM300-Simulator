@@ -23,6 +23,8 @@ public class ExplodingHackable : Hackable
                 GetComponent<Rigidbody>().AddForce(domeDirection * selfExplosionForce, ForceMode.Impulse);
                 Vector3 randomTorque = GetRandomTorque();
                 GetComponent<Rigidbody>().AddTorque(randomTorque * selfTorqueForce, ForceMode.Impulse);
+
+                AudioManager.instance.PlayCachedSound(AudioManager.instance.ExplosionSounds, transform.position, 0.3f);
             }
         }
     }

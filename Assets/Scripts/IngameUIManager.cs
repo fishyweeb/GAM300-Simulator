@@ -11,6 +11,8 @@ public class IngameUIManager : MonoBehaviour
     [SerializeField]
     GameObject pauseUI;
     public Entity playerEntity;
+    [SerializeField]
+    MainMenuHandler mainMenuHandle;
     public static IngameUIManager Instance { get; private set; }
 
     private void Awake()
@@ -53,14 +55,26 @@ public class IngameUIManager : MonoBehaviour
 
     public void PressPause()
     {
-        isPaused = !isPaused;
-        if (isPaused)
+        if (!isPaused)
         {
+            isPaused = true;
             PauseGame();
         }
         else
         {
-            ResumeGame();
+            if (mainMenuHandle && mainMenuHandle.IsAnimationName("Popup"))
+            {
+                isPaused = false;
+                ResumeGame();
+            }
+            else if (mainMenuHandle && mainMenuHandle.IsAnimationName("HowToPlayIdle"))
+            {
+                mainMenuHandle.CloseHowToPlayButton();
+            }
+            else if (mainMenuHandle && mainMenuHandle.IsAnimationName("SettingsPopUp"))
+            {
+                mainMenuHandle.CloseSettingsButton();
+            }
         }
     }
     private void Update()

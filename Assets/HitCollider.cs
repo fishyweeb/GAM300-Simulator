@@ -37,6 +37,10 @@ public class HitCollider : MonoBehaviour
 
                     spawnedFrom.GetComponent<PlayerHack>().AddChargeValue(spawnedFrom.GetComponent<PlayerHack>().chargeHitAmount);
                 }
+                if(other.CompareTag("Player"))
+                {
+                    AudioManager.instance.PlaySoundAtLocation(AudioManager.instance.MiscSounds[0],0.2f,other.transform.position,true);
+                } else AudioManager.instance.PlayCachedSound(AudioManager.instance.HitSoundsFX,other.transform.position,0.2f);
 
                 VFXManager.Instance.Spawn("Hit_02", GetComponent<Collider>().ClosestPointOnBounds(other.bounds.center));
 

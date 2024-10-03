@@ -58,6 +58,8 @@ public class SpawnHit : StateMachineBehaviour
                         hitCollider.transform.rotation = Quaternion.Euler(0.0f, animator.transform.eulerAngles.y, 0.0f);
                         hitCollider.transform.parent = animator.transform;
                         hitCollider.spawnedFrom = animator.gameObject;
+
+                        AudioManager.instance.PlayCachedSound(AudioManager.instance.WhooshSoundsFX,spawnPos,0.2f);
                     }
                     else
                     {

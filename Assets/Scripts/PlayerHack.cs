@@ -23,6 +23,23 @@ public class PlayerHack : MonoBehaviour
     public float chargeHitAmount = 10;
     [SerializeField]
     Image hackCharge;
+    [SerializeField]
+    GameObject hackChargeNotif;
+    [SerializeField]
+    GameObject crosshair;
+    Coroutine hackNotifCoroutine = null;
+    public void DisplayHackNotification()
+    {
+        if (hackChargeNotif)
+        {
+            if (hackNotifCoroutine != null)
+            {
+                StopCoroutine(hackNotifCoroutine);
+            }
+            hackChargeNotif.SetActive(true);
+            hackNotifCoroutine = StartCoroutine(DisableHackChargeNotif(3.0f));
+        }
+    }
     public float GetChargeValue()
     {
         return chargeValue;
@@ -46,6 +63,14 @@ public class PlayerHack : MonoBehaviour
     private void Awake()
     {
         animator= GetComponent<Animator>();
+        if (hackChargeNotif)
+        {
+            hackChargeNotif.SetActive(false);
+        }
+        if (crosshair)
+        {
+            crosshair.SetActive(false);
+        }
     }
     void Update()
     {
@@ -58,8 +83,45 @@ public class PlayerHack : MonoBehaviour
         {
             if (GetComponent<ThirdPersonControllerRB>() && GetComponent<ThirdPersonControllerRB>().Grounded)
             {
-                GameManager.Instance.ToggleHackMode(!GameManager.Instance.GetHackMode());
-                animator.SetBool("Hacking", !animator.GetBool("Hacking"));
+                if (GameManager.Instance.GetHackMode() == false)
+                {
+                    if (chargeValue >= 10)
+                    {
+                        GameManager.Instance.ToggleHackMode(true);
+                        animator.SetBool("Hacking", true);
+                        AudioManager.instance.PlaySoundAtLocation(AudioManager.instance.MiscSounds[1], 0.2f, transform.position);
+                        if (crosshair)
+                        {
+                            crosshair.SetActive(true);
+                        }
+                    }
+                    else
+                    {
+                        DisplayHackNotification();
+                    }
+                }
+                else
+                {
+                    GameManager.Instance.ToggleHackMode(false);
+                    animator.SetBool("Hacking", false);
+                    AudioManager.instance.PlaySoundAtLocation(AudioManager.instance.MiscSounds[1], 0.2f, transform.position);
+                    if (crosshair)
+                    {
+                        crosshair.SetActive(false);
+                    }
+                }
+            }
+        }
+        if (chargeValue < 10 && GameManager.Instance.GetHackMode() == true)
+        {
+            GameManager.Instance.ToggleHackMode(false);
+            animator.SetBool("Hacking", false);
+            AudioManager.instance.PlaySoundAtLocation(AudioManager.instance.MiscSounds[1], 0.2f, transform.position);
+
+            DisplayHackNotification();
+            if (crosshair)
+            {
+                crosshair.SetActive(false);
             }
         }
 
@@ -149,5 +211,15 @@ public class PlayerHack : MonoBehaviour
                 currentSelectedEntity = null;
             }
         }
+    }
+
+    IEnumerator DisableHackChargeNotif(float afterSeconds)
+    {
+        yield return new WaitForSeconds(afterSeconds);
+        if (hackChargeNotif)
+        {
+            hackChargeNotif.SetActive(false);
+        }
+        yield return null;
     }
 }

@@ -132,8 +132,8 @@ public class Entity : MonoBehaviour
         {
             _rigidbody.velocity = Vector3.zero;
         }
-
         DisableComponentsOnDeath();
+        StartCoroutine(DestroyOverTime(3f));
     }
 
     private void DisableComponentsOnDeath()
@@ -195,5 +195,16 @@ public class Entity : MonoBehaviour
     {
     yield return new WaitForSeconds(delay);
     animator.ResetTrigger(triggerName);
+    }
+
+    private IEnumerator DestroyOverTime(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }

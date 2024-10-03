@@ -52,7 +52,7 @@ MonoBehaviour:
   hacked: 0
   isClose: 0
   explosionPrefab: {fileID: 6803756487982418761, guid: e784b4ef535d7814a8d228c7b9719a62, type: 3}
-  explosionPoint: {fileID: 0}
+  explosionPoint: {fileID: 5229549874227436299}
   explodeSelf: 1
   selfExplosionForce: 10
   selfTorqueForce: 10
